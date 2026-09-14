@@ -13,7 +13,7 @@ Backend checks:
 
 ```bash
 cd backend
-python -m pytest --cov=app --cov-report=term-missing --cov-fail-under=80
+python -m pytest --cov=app --cov-report=term-missing --cov-fail-under=90
 ruff check app tests scripts migrations
 bandit -q -r app scripts ../examples
 python -m scripts.evaluate_model

@@ -161,6 +161,12 @@ def package_versions() -> dict[str, str]:
     }
 
 
+def source_revision(explicit_revision: str | None = None) -> str:
+    """Return an explicit revision, the CI commit, or an honest local-state marker."""
+
+    return explicit_revision or os.environ.get("GITHUB_SHA", "uncommitted-working-tree")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run a reproducible Isolation Forest benchmark on BETH")
     parser.add_argument("--train", type=Path, required=True, help="BETH labelled training CSV")
@@ -172,6 +178,10 @@ def main() -> None:
     parser.add_argument("--threshold-percentile", type=float, default=95.0)
     parser.add_argument("--model-seeds", default="42,52,62", help="Comma-separated Isolation Forest seeds")
     parser.add_argument("--estimators", type=int, default=1000)
+    parser.add_argument(
+        "--source-revision",
+        help="Commit SHA for the benchmark code (automatically read from GITHUB_SHA in CI)",
+    )
     parser.add_argument("--output", type=Path)
     args = parser.parse_args()
 
@@ -247,7 +257,7 @@ def main() -> None:
         "evaluation_scope": "Algorithm-family validation; not an end-to-end authentication detector benchmark.",
         "run_metadata": {
             "generated_at": datetime.now(UTC).isoformat(),
-            "source_revision": os.environ.get("GITHUB_SHA", "uncommitted-working-tree"),
+            "source_revision": source_revision(args.source_revision),
             "python": platform.python_version(),
             "packages": package_versions(),
         },

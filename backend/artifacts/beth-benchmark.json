@@ -14,6 +14,7 @@
   "run_metadata": {
     "generated_at": "2026-08-20T13:27:10.984830+00:00",
     "source_revision": "uncommitted-working-tree",
+    "artifact_first_committed_in": "0510165621ad165dd393eafa3dfbd97f90b4bf2a",
     "python": "3.12.13",
     "packages": {
       "numpy": "2.3.2",

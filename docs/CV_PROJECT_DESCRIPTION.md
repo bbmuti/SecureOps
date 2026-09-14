@@ -8,10 +8,10 @@ Python, FastAPI, React, PostgreSQL, SQLAlchemy, scikit-learn, Docker, GitHub Act
 
 Repository: https://github.com/bbmuti/SecureOps
 
-- Windows Security Event Log, Linux OpenSSH ve JSON/JSONL kaynaklarından güvenlik olaylarını alan tam kapsamlı bir izleme platformu geliştirdim.
+- Windows Security Event Log, Linux OpenSSH ve JSON/JSONL kaynaklarından güvenlik olaylarını toplayan uçtan uca bir izleme prototipi geliştirdim.
 - Kural tabanlı tespitleri Isolation Forest davranış analiziyle birleştirerek açıklanabilir 0–100 risk puanı, MITRE ATT&CK eşleştirmesi ve kanıta dayalı alarm üretimi sağladım.
 - HttpOnly cookie, CSRF koruması, atomik refresh-token ailesi rotasyonu ve replay iptali; rate limiting, idempotent veri alımı, audit log, Alembic ve PostgreSQL desteği uyguladım.
-- Gerçek BETH process telemetrisinde üç seed’li 1.000 ağaçlı ensemble ile 100.000 kayıt üzerinde %94,28 F1 ölçen; güven aralığı, random baseline ve veri hash’leri içeren tekrarlanabilir araştırma benchmarkı geliştirdim.
+- Isolation Forest yaklaşımını gerçek BETH process telemetrisi üzerinde ölçmek için veri hash’leri, farklı seed’ler ve güven aralıkları içeren tekrarlanabilir bir benchmark hazırladım; 100.000 kayıtlık test örnekleminde %94,28 F1 ve %13,27 yanlış alarm oranı ölçtüm.
 - Backend/frontend testleri, branch coverage kapısı, PostgreSQL smoke testi, Python/npm güvenlik denetimi, Windows collector kontrolü ve container build içeren GitHub Actions süreci kurdum.
 
 ## English CV version
@@ -22,11 +22,11 @@ Python, FastAPI, React, PostgreSQL, SQLAlchemy, scikit-learn, Docker, GitHub Act
 
 Repository: https://github.com/bbmuti/SecureOps
 
-- Built a full-stack monitoring platform that ingests security telemetry from Windows Security Event Log, Linux OpenSSH, and JSON/JSONL sources.
+- Built an end-to-end monitoring prototype that ingests security telemetry from Windows Security Event Log, Linux OpenSSH, and JSON/JSONL sources.
 - Combined deterministic detections with Isolation Forest behavior scoring to generate explainable 0–100 risk scores, evidence, and MITRE ATT&CK context.
 - Implemented HttpOnly cookie sessions with CSRF protection, atomic refresh-token family rotation and replay revocation, rate limiting, idempotent ingestion, audit logging, Alembic, and PostgreSQL.
 - Established CI gates for backend/frontend tests, branch coverage, PostgreSQL smoke testing, Python/npm audits, Windows collector validation, and container builds.
-- Built a reproducible external BETH process-telemetry benchmark using a three-seed 1,000-tree ensemble, bootstrap intervals, a random baseline, dataset hashes, and a 0.9428 F1 score on a 100,000-record test sample.
+- Evaluated the Isolation Forest approach on real BETH process telemetry with a reproducible benchmark using dataset hashes, multiple seeds, and bootstrap intervals; measured 0.9428 F1 and a 0.1327 false-positive rate on a 100,000-record test sample.
 
 ## Interview explanation
 
@@ -34,7 +34,7 @@ Start with the problem: security analysts need prioritized evidence, not an unex
 
 - deterministic smoke testing from external dataset benchmarking;
 - a model anomaly from proof of an attack;
-- an educational production-shaped MVP from a production SIEM.
+- a portfolio MVP from an internet-facing production SIEM.
 
 ## Likely technical questions
 

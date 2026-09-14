@@ -1,6 +1,6 @@
 # 90-Second Demo Script
 
-This flow demonstrates the real product path rather than a collection of disconnected screens.
+This short flow follows one event from ingestion to alert review and status change.
 
 ## Preparation
 
