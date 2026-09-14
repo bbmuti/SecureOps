@@ -7,6 +7,7 @@ from scripts.benchmark_beth import (
     bootstrap_intervals,
     metrics,
     select_threshold,
+    source_revision,
 )
 
 
@@ -58,3 +59,9 @@ def test_bootstrap_intervals_are_deterministic_and_bounded():
     second = bootstrap_intervals(labels, predictions, repetitions=20, seed=7)
     assert first == second
     assert all(0 <= lower <= upper <= 1 for lower, upper in first.values())
+
+
+def test_source_revision_prefers_ci_commit(monkeypatch):
+    monkeypatch.setenv("GITHUB_SHA", "a" * 40)
+    assert source_revision() == "a" * 40
+    assert source_revision("b" * 40) == "b" * 40

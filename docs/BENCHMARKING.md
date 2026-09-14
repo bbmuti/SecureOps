@@ -31,6 +31,7 @@ python -m scripts.benchmark_beth \
   --max-train 100000 \
   --max-validation 100000 \
   --max-test 100000 \
+  --source-revision "$(git rev-parse HEAD)" \
   --output artifacts/beth-benchmark.json
 ```
 
@@ -46,11 +47,13 @@ The script uses deterministic reservoir sampling, fits only benign training reco
 - sampled class counts;
 - runtime package/Python versions and SHA-256 hashes of all three input files.
 
-File hashes for all three splits, fixed seeds, feature names, sampling limits, and threshold methodology make a result reproducible. Do not commit the downloaded dataset. A generated report may be committed only when it was produced by this script without manual metric editing.
+File hashes for all three splits, fixed seeds, feature names, sampling limits, and threshold methodology make a result reproducible. Pass the current commit through `--source-revision`; CI uses `GITHUB_SHA` automatically. A local run without either value is marked `uncommitted-working-tree` instead of inventing provenance. Do not commit the downloaded dataset. A generated report may be committed only when it was produced by this script without manual metric editing.
 
 ## Versioned result
 
 The committed [BETH report](../backend/artifacts/beth-benchmark.json) was generated on 2026-08-20 from version 3 with 100,000 sampled records in each stage:
+
+The original run was captured before its benchmark changes were committed, so its `source_revision` remains `uncommitted-working-tree` rather than being rewritten after the fact. The artifact records the first commit that introduced that report; future runs resolve the source revision automatically.
 
 | Metric | Test result |
 |---|---:|

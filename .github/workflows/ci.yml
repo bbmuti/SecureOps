@@ -71,7 +71,7 @@ jobs:
       - name: Audit Python dependencies
         run: pip-audit -r requirements.txt -r requirements-dev.txt
       - name: Test with coverage gate
-        run: python -m pytest --cov=app --cov-report=term-missing --cov-fail-under=80
+        run: python -m pytest --cov=app --cov-report=term-missing --cov-fail-under=90
       - name: Run deterministic model smoke evaluation
         run: python -m scripts.evaluate_model
       - name: Exercise migrated PostgreSQL API
