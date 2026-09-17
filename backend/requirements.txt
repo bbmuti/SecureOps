@@ -3,8 +3,8 @@ starlette==1.6.0
 uvicorn[standard]==0.52.4
 sqlalchemy==2.0.52
 psycopg[binary]==3.3.5
-PyJWT==2.13.0
+PyJWT==2.14.0
 scikit-learn==1.9.0
 numpy==2.5.3
 pydantic-settings==2.15.0
-alembic==1.19.2
+alembic==1.20.0
